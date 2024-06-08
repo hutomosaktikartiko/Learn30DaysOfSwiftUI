@@ -276,6 +276,9 @@ struct Day3: View {
                     Text("2. Hanya untuk view spesifik: @State digunakan untuk menyimpan state lokal yang hanya relevan untuk satu view tertentu. Properti yang ditandai dengan @State akan di-reset ke nilai awalnya setiap kali view tersebut dirender ulang.")
                     Text("3. Hanya digunakan pada struct : @State hanya dapat digunakan pada stuct karena SwiftUI akan mengelola state lokal ini secara internal dengan menggunakan konsep boxed value. Hal ini memungkinkan properti @State untuk berubah tanpa mengubah identitas struktur view.")
                     Text("4. Penggunaan dalam modifier dan binding: Properti yang ditandai dengan @State sering diguunakan dalam modifier seperti @Binding , @ObservedObject , dan @EnvironmentObject untuk mengikat dan memantau nilai state antar view.")
+                    Link(destination: URL(string: "https://hutomosaktikartiko.medium.com/30daysofswiftui-day-3-building-dynamic-user-interactions-with-swiftui-controls-806a64ab3c13")!){
+                        Image(systemName: "safari.fill").font(.title).fontWeight(.bold).foregroundColor(.gray)
+                    }
                 }
             }.padding()
         }.navigationBarTitle(Text("Day 3"))
