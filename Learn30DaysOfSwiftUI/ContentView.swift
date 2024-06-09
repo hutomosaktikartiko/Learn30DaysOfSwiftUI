@@ -12,7 +12,8 @@ struct ContentView: View {
         DayItem(day: 1, title: "Embarking on Your Journey with SwiftUI", view: AnyView(Day1())),
         DayItem(day: 2, title: "Understanding the Fundamentals of Views in SwiftUI", view: AnyView(Day2())),
         DayItem(day: 3, title: "Building Dynamic User Interactions with SwiftUI Controls", view: AnyView(Day3())),
-        DayItem(day: 4, title: "Controlling Flexible Layouts with SwiftUI Stacks", view: AnyView(Day4()))
+        DayItem(day: 4, title: "Controlling Flexible Layouts with SwiftUI Stacks", view: AnyView(Day4())),
+        DayItem(day: 5, title: "Exploring Your App with SwiftUI Navigation", view: AnyView(Day5()))
     ]
     
     var body: some View {

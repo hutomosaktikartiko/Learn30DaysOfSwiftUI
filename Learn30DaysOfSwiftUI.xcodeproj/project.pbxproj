@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0D3AA92C15AC9200A8AE3A /* Day5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D3AA82C15AC9200A8AE3A /* Day5.swift */; };
+		2F0D3AAD2C15AE1500A8AE3A /* BodyPageDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0D3AAC2C15AE1500A8AE3A /* BodyPageDayView.swift */; };
 		2FF7E3A92C12F08100F737C0 /* Day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7E3A82C12F08100F737C0 /* Day4.swift */; };
 		B607EADF2BA5D7DA002CA333 /* Day3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B607EADE2BA5D7DA002CA333 /* Day3.swift */; };
 		B6567F4E2B9DBD84005D4C30 /* Learn30DaysOfSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6567F4D2B9DBD84005D4C30 /* Learn30DaysOfSwiftUIApp.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F0D3AA82C15AC9200A8AE3A /* Day5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5.swift; sourceTree = "<group>"; };
+		2F0D3AAC2C15AE1500A8AE3A /* BodyPageDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPageDayView.swift; sourceTree = "<group>"; };
 		2FF7E3A82C12F08100F737C0 /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
 		B607EADE2BA5D7DA002CA333 /* Day3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day3.swift; sourceTree = "<group>"; };
 		B6567F4A2B9DBD84005D4C30 /* Learn30DaysOfSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learn30DaysOfSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +119,8 @@
 				B6567F532B9DBD87005D4C30 /* Learn30DaysOfSwiftUI.entitlements */,
 				B6567F542B9DBD87005D4C30 /* Preview Content */,
 				2FF7E3A82C12F08100F737C0 /* Day4.swift */,
+				2F0D3AA82C15AC9200A8AE3A /* Day5.swift */,
+				2F0D3AAC2C15AE1500A8AE3A /* BodyPageDayView.swift */,
 			);
 			path = Learn30DaysOfSwiftUI;
 			sourceTree = "<group>";
@@ -274,10 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F0D3AA92C15AC9200A8AE3A /* Day5.swift in Sources */,
 				B6567F502B9DBD84005D4C30 /* ContentView.swift in Sources */,
 				B6F4F2442B9EEA3900144823 /* day2.swift in Sources */,
 				B6F4F2462B9F087C00144823 /* CodeSnippetView.swift in Sources */,
 				B6F4F2422B9EE4BA00144823 /* day1.swift in Sources */,
+				2F0D3AAD2C15AE1500A8AE3A /* BodyPageDayView.swift in Sources */,
 				2FF7E3A92C12F08100F737C0 /* Day4.swift in Sources */,
 				B607EADF2BA5D7DA002CA333 /* Day3.swift in Sources */,
 				B6567F4E2B9DBD84005D4C30 /* Learn30DaysOfSwiftUIApp.swift in Sources */,
