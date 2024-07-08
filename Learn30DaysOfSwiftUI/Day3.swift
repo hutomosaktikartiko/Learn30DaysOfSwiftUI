@@ -11,29 +11,24 @@ struct Day3: View {
     // text field
     @State private var username: String = ""
     @FocusState private var emailFieldIsFocused: Bool
-    
+
     @State private var username2: String = ""
     @State private var password: String = ""
-    
-    
+
     // toggle
     @State private var isToogled: Bool = false
     @State private var isFeatureEnabled: Bool = false
-    
-    
+
     // picker
     @State private var selectedOptionIndex = 0
     let options = ["Option 1", "Options 2", "Options 3"]
-    
-    
+
     // handling user interactions and data binding
     @State private var notes: [String] = []
     @State private var newNote: String = ""
-    
-    
+
     var body: some View {
-       
-        ScrollView{
+        ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 Text("Membangun Interaksi Pengguna yang Dinamis dengan SwiftUI Controls").frame(maxWidth: .infinity, maxHeight: .infinity).font(.largeTitle).fontWeight(.bold).multilineTextAlignment(.center)
                 Divider()
@@ -47,23 +42,23 @@ struct Day3: View {
                     Text("Contoh berikut menunjukkan sebuah TextField untuk menerima username, dan sebuah Text view di bawahnya yang mengikuti nilai username secara terus-menerus. Text view ini akan berubah warna saat pengguna sedang ataupun telah mengakhiri pengeditan.")
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    @State private var username: String = ""
-                                    @FocusState private var emailFieldIsFocused: Bool
+                    @State private var username: String = ""
+                    @FocusState private var emailFieldIsFocused: Bool
 
-                                    var body: some View {
-                                        TextField(
-                                            "User name (email address)",
-                                            text: $username
-                                        )
-                                        .focused($emailFieldIsFocused)
-                                        .textInputAutocapitalization(.never)
-                                        .disableAutocorrection(true)
-                                        .border(.secondary)
+                    var body: some View {
+                        TextField(
+                            "User name (email address)",
+                            text: $username
+                        )
+                        .focused($emailFieldIsFocused)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                        .border(.secondary)
 
-                                        Text(username)
-                                            .foregroundColor(emailFieldIsFocused ? .red : .blue)
-                                    }
-                                    """)
+                        Text(username)
+                            .foregroundColor(emailFieldIsFocused ? .red : .blue)
+                    }
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     TextField(
                         "User name (email address)",
@@ -81,15 +76,15 @@ struct Day3: View {
                     Text("Contoh:").fontWeight(.semibold)
                     Text("Pada form register, user diwajibkan untuk mengisi form username dan password. Kita dapat menggunakan prompt untuk menunjukkan bahwa kedua form tersebut wajib diisi, seperti berikut:")
                     CodeSnippetView(code: """
-                                    Form {
-                                        TextField(text: $username, prompt: Text("Required")) {
-                                            Text("Username")
-                                        }
-                                        SecureField(text: $password, prompt: Text("Required")) {
-                                            Text("Password")
-                                        }
-                                    }.frame(height: 150)
-                                    """)
+                    Form {
+                        TextField(text: $username, prompt: Text("Required")) {
+                            Text("Username")
+                        }
+                        SecureField(text: $password, prompt: Text("Required")) {
+                            Text("Password")
+                        }
+                    }.frame(height: 150)
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     Form {
                         TextField(text: $username2, prompt: Text("Required")) {
@@ -105,10 +100,10 @@ struct Day3: View {
                     Text("Kita dapat menyesuaikan tampilan dan interaksi dari TextField menggunakan modifier textFieldStyle(...) , dengan memasukan instance dari TextFieldStyle . Contoh berikut menerapkan style roundedBorder pada text field.")
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    TextField(text: $username, prompt: Text("Required")) {
-                                            Text("Username")
-                                        }.textFieldStyle(.roundedBorder)
-                                    """)
+                    TextField(text: $username, prompt: Text("Required")) {
+                            Text("Username")
+                        }.textFieldStyle(.roundedBorder)
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     TextField(text: $username, prompt: Text("Required")) {
                         Text("Username")
@@ -124,9 +119,9 @@ struct Day3: View {
                     Text("Kita dapat menambahkan toggle ke tampilan aplikasi dengan menggunakan syntax berikut:.")
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    Toggle("Enable Feature", isOn: $isToogled)
-                                            .padding()
-                                    """)
+                    Toggle("Enable Feature", isOn: $isToogled)
+                            .padding()
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     Toggle("Enable Feature", isOn: $isToogled)
                         .padding()
@@ -137,16 +132,16 @@ struct Day3: View {
                     Text("Contoh:").fontWeight(.semibold)
                     Text("Misalkan kita user untuk mengaktifkan atau menonaktifkan fitur dalam aplikasi kita. Berikut contoh kodenya:")
                     CodeSnippetView(code: """
-                                    Toggle("Enable Feature", isOn: $isFeatureEnabled)
-                                        .padding()
-                                    if isFeatureEnabled {
-                                        Text("Feature is enabled!")
-                                            .padding()
-                                    } else {
-                                        Text("Feature is disabled.")
-                                            .padding()
-                                    }
-                                    """)
+                    Toggle("Enable Feature", isOn: $isFeatureEnabled)
+                        .padding()
+                    if isFeatureEnabled {
+                        Text("Feature is enabled!")
+                            .padding()
+                    } else {
+                        Text("Feature is disabled.")
+                            .padding()
+                    }
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     Toggle("Enable Feature", isOn: $isFeatureEnabled)
                         .padding()
@@ -167,14 +162,14 @@ struct Day3: View {
                     Text("VStack").font(.title2).fontWeight(.semibold)
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    Picker("Choose on option", selection: $selectedOptionIndex) {
-                                        ForEach(0 ..< options.count) {
-                                            Text(options[$0])
-                                        }
-                                    }
-                                    .pickerStyle(SegmentedPickerStyle())
-                                    Text("Selected Option: \(options[selectedOptionIndex])")
-                                    """)
+                    Picker("Choose on option", selection: $selectedOptionIndex) {
+                        ForEach(0 ..< options.count) {
+                            Text(options[$0])
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    Text("Selected Option: \(options[selectedOptionIndex])")
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     Picker("Choose on option", selection: $selectedOptionIndex) {
                         ForEach(0 ..< options.count) {
@@ -193,14 +188,14 @@ struct Day3: View {
                     Text("VStack").font(.title2).fontWeight(.semibold)
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    Picker("Choose on option", selection: $selectedOptionIndex) {
-                                        ForEach(0 ..< options.count) {
-                                            Text(options[$0])
-                                        }
-                                    }
-                                    .pickerStyle(SegmentedPickerStyle())
-                                    Text("Selected Option: \(options[selectedOptionIndex])")
-                                    """)
+                    Picker("Choose on option", selection: $selectedOptionIndex) {
+                        ForEach(0 ..< options.count) {
+                            Text(options[$0])
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    Text("Selected Option: \(options[selectedOptionIndex])")
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     Picker("Choose on option", selection: $selectedOptionIndex) {
                         ForEach(0 ..< options.count) {
@@ -221,31 +216,31 @@ struct Day3: View {
                     Text("Kita dapat menambahkan modifier actions seperti .onTapGesture atau .onTap ke tampilan untuk menangani interaksi user seperti ketika tampilan diklik.")
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    Text("Tap Me")
-                                        .onTapGesture {
-                                            // handle user tap here
-                                        }
-                                    """)
+                    Text("Tap Me")
+                        .onTapGesture {
+                            // handle user tap here
+                        }
+                    """)
                     /// E.2
                     Text("State Modifier").font(.title2).fontWeight(.semibold)
                     Text("Properti @State digunakan untuk mengelola state lokal dalam sebuah view. Ketika kita menandai sebuah properti dengan @State , SwiftUI akan secara otomatis memantau perubahan pada nilai tersebut dan merender ulang view jika terjadi perubahan. Sebelumnya properti udah sering digunakan dari awal materi ini untuk mengelola data binding dari kontrol UI.")
                     Text("Contoh:").fontWeight(.semibold)
                     CodeSnippetView(code: """
-                                    ForEach(notes, id: .self) { note in
-                                        Text(note)
-                                    }
-                                    .onDelete {indicates in
-                                        notes.remove(atOffsets: indicates)
-                                    }
-                                    List {
-                                        ForEach(notes, id: \\.self) { note in
-                                            Text(note)
-                                        }
-                                        .onDelete {indicates in
-                                            notes.remove(atOffsets: indicates)
-                                        }
-                                    }.frame(height: notes.isEmpty ? 0 : 150)
-                                    """)
+                    ForEach(notes, id: .self) { note in
+                        Text(note)
+                    }
+                    .onDelete {indicates in
+                        notes.remove(atOffsets: indicates)
+                    }
+                    List {
+                        ForEach(notes, id: \\.self) { note in
+                            Text(note)
+                        }
+                        .onDelete {indicates in
+                            notes.remove(atOffsets: indicates)
+                        }
+                    }.frame(height: notes.isEmpty ? 0 : 150)
+                    """)
                     Text("Hasilnya:").fontWeight(.semibold)
                     TextField("Add a new note", text: $newNote)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -260,7 +255,7 @@ struct Day3: View {
                         ForEach(notes, id: \.self) { note in
                             Text(note)
                         }
-                        .onDelete {indicates in
+                        .onDelete { indicates in
                             notes.remove(atOffsets: indicates)
                         }
                     }.frame(height: notes.isEmpty ? 0 : 150)
@@ -276,7 +271,7 @@ struct Day3: View {
                     Text("2. Hanya untuk view spesifik: @State digunakan untuk menyimpan state lokal yang hanya relevan untuk satu view tertentu. Properti yang ditandai dengan @State akan di-reset ke nilai awalnya setiap kali view tersebut dirender ulang.")
                     Text("3. Hanya digunakan pada struct : @State hanya dapat digunakan pada stuct karena SwiftUI akan mengelola state lokal ini secara internal dengan menggunakan konsep boxed value. Hal ini memungkinkan properti @State untuk berubah tanpa mengubah identitas struktur view.")
                     Text("4. Penggunaan dalam modifier dan binding: Properti yang ditandai dengan @State sering diguunakan dalam modifier seperti @Binding , @ObservedObject , dan @EnvironmentObject untuk mengikat dan memantau nilai state antar view.")
-                    Link(destination: URL(string: "https://hutomosaktikartiko.medium.com/30daysofswiftui-day-3-building-dynamic-user-interactions-with-swiftui-controls-806a64ab3c13")!){
+                    Link(destination: URL(string: "https://hutomosaktikartiko.medium.com/30daysofswiftui-day-3-building-dynamic-user-interactions-with-swiftui-controls-806a64ab3c13")!) {
                         Image(systemName: "safari.fill").font(.title).fontWeight(.bold).foregroundColor(.gray)
                     }
                 }
@@ -284,4 +279,3 @@ struct Day3: View {
         }.navigationBarTitle(Text("Day 3"))
     }
 }
-

@@ -9,13 +9,26 @@ import SwiftUI
 
 struct CodeSnippetView: View {
     var code: String
-    
+
     var body: some View {
-        Text(code)
-            .font(.system(.body, design: .monospaced))
-            .foregroundColor(.white)
-            .padding()
-            .background(Color.gray)
-            .cornerRadius(8)
+        Text(
+            code
+        )
+        .font(
+            .system(
+                .body,
+                design: .monospaced
+            )
+        )
+        .foregroundColor(
+            .white
+        )
+        .padding()
+        .background(
+            Color.gray
+        )
+        .cornerRadius(
+            8
+        )
     }
 }
