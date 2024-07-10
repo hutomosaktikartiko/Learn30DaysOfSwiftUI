@@ -48,7 +48,7 @@ struct ContentView: View {
             day: 6,
             title: "Bringing Your Interface to Life with SwiftUI Animations",
             view: AnyView(
-                Day5()
+                Day6()
             )
         )
     ]

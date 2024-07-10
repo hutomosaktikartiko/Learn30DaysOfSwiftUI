@@ -8,76 +8,74 @@
 import SwiftUI
 
 struct Day6: View {
-    @State private var name: String = ""
+    @State private var scale: CGFloat = 1.0
+    @State private var showDetail = false
+    @State private var rotation: Double = 0
 
     var body: some View {
         BodyPageDayView(
             navigationBarTitle: "Day 6",
             title: "Bringing Your Interface to Life with SwiftUI Animations",
             points: [PointItem(
-                title: "Navigasi antar Layar dengan NavigationView dan NavigationLink",
-                description: "Navigasi adalah elemen penting dalam aplikasi modern yang memungkinkan pengguna berpindah antar layar untuk melihat atau memasukkan informasi. SwiftUI menyediakan cara yang efisien dan elegan untuk mengimplementasikan navigasi dengan NavigationView dan NavigationLink.\n\nNavigationView memberikan konteks yang memungkinkan kita untuk menyusun tampilan dalam struktur hierarkis. Ini sangat berguna untuk aplikasi yang memiliki banyak level navigasi, seperti aplikasi pengaturan atau aplikasi belanja. Dengan menggunakan NavigationView , kita dapat membuat pengalaman navigasi yang lebih terorganisir dan mudah diikuti oleh pengguna.\n\nNavigationLink , memungkinkan pengguna untuk menavigasi ke tampilan baru ketika sebuah elemen, seperti teks atau tombol, diklik. Ini menyediakan cara yang sederhana dan intuitif untuk menghubungkan berbagai bagian dari aplikasi kita.\n\nNavigasi ini memungkinkan kita untuk membangun aplikasi dengan struktur yang lebih kompleks dan memungkinkan pengguna untuk berpindah antar tampilan dengan mudah. Setiap kali pengguna menavigasi ke layar baru, SwiftUI mengelola transisi dan pengelolaan tampilan secara otomatis, sehingga memberikan pengalaman pengguna yang mulus.",
+                title: "Menjelajahi Kemampuan Animasi Bawaan di SwiftUI",
+                description: "SwiftUI menyediakan berbagai kemampuan animasi bawaan yang memudahkan pengembang untuk menambahkan efek animasi ke dalam aplikasi mereka. Animasi ini dapat diterapkan pada berbagai properti view seperti ukuran, posisi, opacity, dan lainnya.\n\nAnimasi bawaan di SwiftUI bisa diterapkan menggunakan modifier .animation() . Kita dapat menggunakan berbagai jenis animasi bawaan seperti easeIn , easeOut , easeInOut , dan linear .",
                 subPoints: [SubPointItem(
                     codeExample: CodeExampleItem(
-                        codeView: AnyView(NavigationView {
-                            VStack {
-                                Text(
-                                    "Welcome to the main View"
-                                ).font(
-                                    .headline
-                                ).padding()
-                                NavigationLink(
-                                    destination: DetailView()
-                                ) {
-                                    Text(
-                                        "Go to Detail View"
-                                    ).padding().background(
-                                        .blue
-                                    ).foregroundColor(
-                                        .white
-                                    ).cornerRadius(
-                                        8
-                                    )
-                                }
-                            }.navigationTitle(
-                                "Home"
-                            )
+                        codeView: AnyView(VStack {
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .scaleEffect(scale)
+                                .animation(.easeInOut(duration: 2), value: scale)
+                            Button("Animate") {
+                                scale = scale == 1.0 ? 1.5 : 1.0
+                            }
                         }),
-                        explanation: "- NavigationView membungkus tampilan utama ('ContentView'), sehingga memungkinkan kita untuk menambahkan navigasi.\n-NavigationLink digunakan untuk menavigasi ke 'DetailView' saat teks 'Go to Detail View' diklik.\n-NavigationTitle digunakan untuk memberikan judul pada setiap layar"
+                        explanation: "Pada contoh di atas, kita menggunakan animation(.easeInOut(duration: 2), value: scale) untuk mengubah ukuran gambar ketika tombol ditekan."
                     )
                 )]
             ),
             PointItem(
-                title: "Memahami Cara Mengirim Data antar View saat Navigasi",
-                description: "Sering kali, kita perlu mengirim data antar tampilan saat navigasi. Ini dapat dilakukan dengan memanfaatkan properti '@State' dan '@Binding'.\n\nDalam SwiftUI, data dapat dengan mudah dikirim dari satu tampilan ka tampilan lainnya menggunakan properti '@State' dan '@Binding'. '@State' digunakan untuk menyimpan data yang dapat diubah, sedangkan '@Binding' digunakan untuk menggabungkan data tersebut antara tampilan-tampilan yang berbeda.\n\nDengan menggunakan '@Binding', kita dapat memastikan bahwa perubahan yang dilakukan pada data di satu tampilan akan otomatis tercermin di tampilan lain. Ini sangat penting untuk menjaga konsistensi data dan memastikan bahwa aplikasi berfungsi sebagaimana mestinya.",
+                title: "Mempelajari Cara Menganimasikan Transisi View, Opacity, dan Position",
+                description: "SwiftUI memungkinkan kita untuk menganimasikan transisi antara view, perubahan opacity, dan position dengan sangat mudah.\n\nKita dapat menggunakan modifier seperti transition() , .opacity() , dan .offset() bersama dengan .animation() untuk mengatur animasi transisi, perubahan opacity, dan position.",
                 subPoints: [SubPointItem(
                     codeExample: CodeExampleItem(
-                        codeView: AnyView(NavigationView {
-                            VStack {
-                                TextField(
-                                    "Enter your name",
-                                    text: $name
-                                )
-                                NavigationLink(
-                                    destination: DetailView2(
-                                        name: $name
-                                    )
-                                ) {
-                                    Text(
-                                        "Go to Detail View 2"
-                                    ).padding().background(
-                                        .blue
-                                    ).foregroundColor(
-                                        .white
-                                    ).cornerRadius(
-                                        8
-                                    )
+                        codeView: AnyView(VStack {
+                            Button("Toggle Detail") {
+                                withAnimation {
+                                    showDetail.toggle()
                                 }
-                            }.navigationTitle(
-                                "Home"
-                            )
+                            }
+
+                            if showDetail {
+                                Text("Detail View")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                    .transition(.slide)
+                                    .animation(.easeInOut, value: showDetail)
+                            }
                         }),
-                        explanation: "- @State digunakan untuk emngelola input teks di ContentView.\n-@Binding digunakan di DetailView untuk menerima dan menampilkan data dari ContentView.\n-Perubahan yang dilakukan pada name di ContentView akan secara otomatis tercermin di DetailView"
+                        explanation: "Pada contoh di atas, kita menggunakan .transition(.slide) untuk menambahkan animasi slide pada view ketika ditampilkan dan disembunyikan."
+                    )
+                )]
+            ), PointItem(
+                title: "Memahami Cara Membuat Animasi dan Efek Kustom di SwiftUI",
+                description: "Selain animasi bawaan, pada SwiftUI memungkinkan kita juga untuk membuat animasi kustom dan efek sesuai dengan kebutuhan.\n\nDengan menggunakan kombinasi dari berbagai modifier animasi dan kustomisasi durasi, kurva dan nilai, kita dapat membuat animasi yang kompleks dan menarik.",
+                subPoints: [SubPointItem(
+                    codeExample: CodeExampleItem(
+                        codeView: AnyView(VStack {
+                            Image(systemName: "arrow.right.circle.fill")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .rotationEffect(.degrees(rotation))
+                                .animation(.interpolatingSpring(stiffness: 50, damping: 5), value: rotation)
+
+                            Button("Rotate") {
+                                rotation += 45
+                            }
+                        }),
+                        explanation: "Pada contoh di atas, kita menggunakan animation(.interpolatingSpring(stiffness: 50, damping: 5), value: rotation) untuk menambahkan animasi rotasi dengan efek spring yang kustom."
                     )
                 )]
             )],
