@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct Day7: View {
-    @State private var scale: CGFloat = 1.0
-    @State private var showDetail = false
-    @State private var rotation: Double = 0
-
     var body: some View {
         BodyPageDayView(
             navigationBarTitle: "Day 7",
