@@ -50,7 +50,12 @@ struct ContentView: View {
             view: AnyView(
                 Day6()
             )
-        )
+        ),
+        DayItem(
+            day: 7,
+            title: "Carving Creativity with Amazing SwiftUI Modifiers",
+            view: AnyView(Day7())
+        ),
     ]
 
     var body: some View {
